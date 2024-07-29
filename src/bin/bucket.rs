@@ -6,7 +6,7 @@ struct Bucket<T> {
 impl<T> Bucket<T> {
     fn is_same(&self, other: Bucket<T>) -> bool
     where
-        T: std::cmp::PartialEq,
+        T: PartialEq,
     {
         self.val == other.val
     }
