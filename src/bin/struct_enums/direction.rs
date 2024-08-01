@@ -1,7 +1,5 @@
-use crate::Direction::{Down, Left, Right, Up};
-
 #[derive(Debug)]
-enum Direction {
+pub enum Direction {
     Up,
     Down,
     Left,
@@ -9,7 +7,8 @@ enum Direction {
 }
 
 impl Direction {
-    fn direction_as_string(direction: Direction) -> &'static str {
+    pub fn direction_as_string(direction: Direction) -> &'static str {
+        use Direction::*;
         match direction {
             Up => "Up",
             Down => "Down",
@@ -28,7 +27,7 @@ impl Direction {
         }
     }
 
-    fn next(&self) -> Direction {
+    pub fn next(&self) -> Direction {
         use Direction::*;
         match *self {
             Up => Left,
@@ -36,22 +35,5 @@ impl Direction {
             Left => Down,
             Right => Up,
         }
-    }
-}
-
-fn main() {
-    println!("All possible moves: {}, {}, {}, {}",
-             Direction::direction_as_string(Up),
-             Direction::direction_as_string(Down),
-             Direction::direction_as_string(Left),
-             Direction::direction_as_string(Right)
-    );
-
-    let mut direction: Direction = Up;
-    println!("My starting direction is: {:?}", direction);
-
-    for _ in 0..8 {
-        direction = direction.next();
-        println!("I go: {:?}", direction)
     }
 }

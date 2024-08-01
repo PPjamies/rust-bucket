@@ -3,30 +3,30 @@ use std::fmt::Debug;
 type NodeBox<T> = Option<Box<Node<T>>>;
 
 #[derive(Debug)]
-struct Node<T> {
-    val: T,
-    left: NodeBox<T>,
-    right: NodeBox<T>,
+pub struct Node<T> {
+    pub val: T,
+    pub left: NodeBox<T>,
+    pub right: NodeBox<T>,
 }
 
 impl<T> Node<T> {
-    fn new(_payload: T) -> Node<T> {
+    pub fn new(_payload: T) -> Node<T> {
         Node { val: _payload, left: None, right: None }
     }
 
-    fn boxer(node: Node<T>) -> NodeBox<T> {
+    pub fn boxer(node: Node<T>) -> NodeBox<T> {
         Some(Box::new(node))
     }
 
-    fn set_left(&mut self, node: Node<T>) {
+    pub fn set_left(&mut self, node: Node<T>) {
         self.left = Self::boxer(node)
     }
 
-    fn set_right(&mut self, node: Node<T>) {
+    pub fn set_right(&mut self, node: Node<T>) {
         self.right = Self::boxer(node)
     }
 
-    fn insert(&mut self, data: T)
+    pub fn insert(&mut self, data: T)
     where
         T: PartialEq + PartialOrd,
     {
@@ -43,7 +43,7 @@ impl<T> Node<T> {
         }
     }
 
-    fn preorder_visit(&self)
+    pub fn preorder_visit(&self)
     where
         T: Debug,
     {
@@ -56,7 +56,7 @@ impl<T> Node<T> {
         }
     }
 
-    fn inorder_visit(&self)
+    pub fn inorder_visit(&self)
     where
         T: Debug,
     {
@@ -69,7 +69,7 @@ impl<T> Node<T> {
         }
     }
 
-    fn postorder_visit(&self)
+    pub fn postorder_visit(&self)
     where
         T: Debug,
     {
@@ -81,21 +81,4 @@ impl<T> Node<T> {
         }
         println!("({:?})", self.val);
     }
-}
-
-fn main() {
-    let mut root = Node::new(10);
-    root.set_left(Node::new(5));
-    root.set_right(Node::new(15));
-
-    println!("arr {:#?}\n", root);
-
-    println!("Pre-order traversal...");
-    root.preorder_visit();
-
-    println!("In-order traversal...");
-    root.inorder_visit();
-
-    println!("Post-order traversal...");
-    root.postorder_visit();
 }
