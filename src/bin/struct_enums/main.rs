@@ -1,6 +1,5 @@
 use std::ops::Add;
 
-use crate::bank_balance::BankBalance;
 use crate::bucket::Bucket;
 use crate::direction::Direction::{Down, Left, Right, Up};
 use crate::person::Person;
@@ -8,7 +7,6 @@ use crate::plant::Plant;
 use crate::shape::Shape;
 use crate::value::{dump, eat_and_dump, Value};
 
-mod bank_balance;
 mod plant;
 mod bucket;
 mod candy;
@@ -19,11 +17,6 @@ mod shape;
 mod value;
 
 fn main() {
-    // bank_balance.rs
-    let bank_balance = BankBalance { val: 800.45 };
-    let other_bank_balance = BankBalance { val: 1001.25 };
-    println!("Total bank balance is: {}", bank_balance.add(other_bank_balance));
-
     // bucket.rs
     let bucket = Bucket { val: 12 };
     let mut is_same = bucket.is_same(Bucket { val: 12 });
