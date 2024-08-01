@@ -1,3 +1,5 @@
+use crate::candy;
+
 pub struct CandyBag {
     pub name: String,
     pub curr_quantity: i64,
@@ -24,4 +26,18 @@ impl Iterator for CandyBag {
             Some(res)
         }
     }
+}
+
+#[test]
+fn candy_test() {
+    let candy_bag = candy::create_candy_bag(
+        "skittles".to_string(),
+        20,
+        5,
+    );
+
+    for scoop in candy_bag {
+        println!("Candy left: {} ", scoop)
+    }
+    println!("No more candy left!!!");
 }

@@ -40,3 +40,23 @@ impl fmt::Debug for Person {
         write!(f, "{}", self.get_age())
     }
 }
+
+#[test]
+fn person_test() {
+    println!("\nTesting Structs...");
+    let mut person = Person::new(
+        "PJ",
+        "Jindrich",
+        &27,
+        "female",
+    );
+    person.print();
+
+    person.set_age(&28);
+    person.print();
+
+    let another_person = person.copy();
+    another_person.print();
+
+    println!("Prints only the age: {:?}", another_person);
+}

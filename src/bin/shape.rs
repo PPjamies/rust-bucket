@@ -13,3 +13,12 @@ impl Shape for f32 {
         format!("eight-byte float {:?}", self)
     }
 }
+
+#[test]
+fn shape_test() {
+    println!("\nTesting Traits...");
+    let integral_number: i32 = 10;
+    let floating_number: f32 = 24.4;
+    println!("show {}", integral_number.show());
+    println!("show {}", floating_number.show());
+}
