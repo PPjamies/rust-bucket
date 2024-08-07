@@ -3,5 +3,14 @@ name = "rust-bucket"
 version = "0.1.0"
 edition = "2021"
 
+# default opt-levels if no profiles are mentioned dev-0 release-3
+# opt-level increases compile time
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+
 [dependencies]
 log = "0.4.22"
+ 
